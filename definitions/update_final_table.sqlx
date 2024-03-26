@@ -6,18 +6,16 @@
 -- Config blocks allow you to configure, document, and test your data assets.
 
 
--- config {
---   type: "incremental", // Creates a view in BigQuery. Try changing to "table" instead.
---   columns: {
---     test: "A description for the test column", // Column descriptions are pushed to BigQuery.
---   }
--- }
+config {
+  type: "operations", // Creates a view in BigQuery. Try changing to "table" instead.
+  dependencies : test.sqlx
+}
 
--- -- The rest of a SQLX file contains your SELECT statement used to create the table.
+-- The rest of a SQLX file contains your SELECT statement used to create the table.
 
--- INSERT INTO `dataformtraining2024.dataform.final_1`
--- SELECT * 
---   FROM `dataformtraining2024.dataform.staging_1`
+INSERT INTO `dataformtraining2024.dataform.final_1`
+SELECT * 
+  FROM `dataformtraining2024.dataform.staging_1`
 
 
 -- ${when(incremental(), ```(SELECT COUNT(DATE(TIMESTAMP_MILLIS(last_modified_time))) AS number_of_updates
