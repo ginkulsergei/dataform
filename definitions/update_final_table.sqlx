@@ -8,7 +8,7 @@
 
 config {
   type: "operations", // Creates a view in BigQuery. Try changing to "table" instead.
-  dependencies : test.sqlx
+  dependencies : ["test"]
 }
 
 -- The rest of a SQLX file contains your SELECT statement used to create the table.
