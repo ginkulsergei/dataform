@@ -6,8 +6,8 @@ config {
 
 -- The rest of a SQLX file contains your SELECT statement used to create the table.
 
-TRUNCATE TABLE `dataformtraining2024.dataform.staging_1`;
-INSERT INTO `dataformtraining2024.dataform.staging_1`
+TRUNCATE TABLE `dataformtraining2024.prepared_ua.staging_1`;
+INSERT INTO `dataformtraining2024.prepared_ua.staging_1`
 VALUES 
 ("Steven", "Spielberg", "Schindler's list"),
 ("Steven", "Spielberg", "Jurassic Park")

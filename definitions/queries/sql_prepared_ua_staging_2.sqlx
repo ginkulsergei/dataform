@@ -1,0 +1,17 @@
+config {
+  type: "operations", //  comments blabla
+ 
+}
+
+
+-- The rest of a SQLX file contains your SELECT statement used to create the table.
+
+TRUNCATE TABLE `dataformtraining2024.prepared_ua.staging_2`;
+INSERT INTO `dataformtraining2024.prepared_ua.staging_2`
+VALUES 
+("Steven", "Spielberg", "Schindler's list"),
+("Steven", "Spielberg", "Jurassic Park")
+--,("Christopher", "Nolan", "Oppenheimer")
+
+
+-- select "Hello Serge"
