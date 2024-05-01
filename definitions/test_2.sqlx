@@ -1,1 +1,11 @@
-select "${ constants.launch_dates }"
+-- select "${ constants.launch_dates }"
+
+config {
+  type: "incremental"
+}
+
+SELECT *
+FROM ...
+${when(incremental(),
+    `SELECT MAX(created_at) FROM ${self()}`)}
+}
