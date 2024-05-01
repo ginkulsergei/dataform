@@ -8,7 +8,7 @@
 
 config {
   type: "operations", // Creates a view in BigQuery. Try changing to "table" instead.
-  dependencies : [//"staging_1",
+  dependencies : ["staging_1",
                   "sql_prepared_ua_staging_2"] // mention all dependencies
 }
 
