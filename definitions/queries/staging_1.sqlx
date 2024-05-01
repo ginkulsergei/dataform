@@ -5,7 +5,7 @@ config {
  
 }
 pre_operations {
-   ${when(incremental(),`TRUNCATE TABLE ${self()}`)};
+   ${when(incremental(),`TRUNCATE TABLE ${self()}`)}
 
 }
 
@@ -16,9 +16,5 @@ SELECT *
   FROM `test-serge-1995.raw_ua.staging_1`
 
 ${when(incremental(),`WHERE last_name NOT IN (SELECT last_name FROM ${self()})`,
-                     `WHERE 1=1`)};
+                     `WHERE 1=1`)}
 
---,("Christopher", "Nolan", "Oppenheimer")
-
-
--- select "Hello Serge"
