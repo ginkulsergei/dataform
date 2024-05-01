@@ -1,5 +1,6 @@
 config {
   type: "operations", //  comments blabla
+//  dependents : ["sql_enterprise_ua_update_final_table"]
  
 }
 

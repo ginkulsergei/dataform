@@ -1,0 +1,11 @@
+config {type: "operations"}
+
+js {
+var launch_dates = constants.launch_dates
+launch_dates.push("Lilo");
+console.log(launch_dates)
+module.exports = { launch_dates };
+}
+
+select "${ constants.launch_dates }"
+
