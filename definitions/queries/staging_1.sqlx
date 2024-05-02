@@ -16,5 +16,5 @@ config {
 SELECT * 
   FROM `test-serge-1995.raw_ua.staging_1`
 
-${when(incremental(),`WHERE last_name NOT IN (SELECT last_name FROM ${self()})`)}
+${when(incremental(),`WHERE id NOT IN (SELECT id FROM ${self()})`)}
 

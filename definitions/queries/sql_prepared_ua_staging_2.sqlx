@@ -7,6 +7,7 @@ config {
 -- The rest of a SQLX file contains your SELECT statement used to create the table.
 
 TRUNCATE TABLE `dataformtraining2024.prepared_ua.staging_2`;
+INSERT INTO `dataformtraining2024.prepared_ua.staging_2`
 SELECT * 
   FROM `test-serge-1995.raw_ua.staging_2`
 --,("Christopher", "Nolan", "Oppenheimer")
