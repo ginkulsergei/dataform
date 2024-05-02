@@ -1,13 +1,14 @@
 config {
   type: "incremental", //  comments blabla
-  schema: "prepared_ua"
+  schema: "prepared_ua",
+  uniqueKey: ["id"]
 //  dependents : ["sql_enterprise_ua_update_final_table"]
  
 }
-pre_operations {
-   ${when(incremental(),`TRUNCATE TABLE ${self()}`)}
-
-}
+--pre_operations {
+--   ${when(incremental(),`TRUNCATE TABLE ${self()}`)}
+--
+--}
 
 
 -- The rest of a SQLX file contains your SELECT statement used to create the table.
@@ -15,6 +16,5 @@ pre_operations {
 SELECT * 
   FROM `test-serge-1995.raw_ua.staging_1`
 
-${when(incremental(),`WHERE last_name NOT IN (SELECT last_name FROM ${self()})`,
-                     `WHERE 1=1`)}
+${when(incremental(),`WHERE last_name NOT IN (SELECT last_name FROM ${self()})`)}
 
