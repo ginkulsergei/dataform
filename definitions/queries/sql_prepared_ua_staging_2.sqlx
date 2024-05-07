@@ -11,7 +11,7 @@ INSERT INTO `dataformtraining2024.prepared_ua.staging_2`
 SELECT * 
   FROM `test-serge-1995.raw_ua.staging_2`;
 
-CREATE OR REPLACE TABLE `dataformtraining2024.prepared_ua.staging_1_ghost`
+CREATE OR REPLACE TABLE `dataformtraining2024.prepared_ua.staging_2_ghost`
 (
 id INT,
 first_name	STRING,
