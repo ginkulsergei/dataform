@@ -1,11 +1,14 @@
 config {
   type: "incremental", //  comments blabla
   schema: "prepared_ua",
+  name : "staging_1",
   uniqueKey: ["id"],
   bigquery: { 
     partitionBy: "DATE(system_last_update)",
-  updatePartitionFilter: `system_last_update >= current_datetime()`
+    //updatePartitionFilter: `system_last_update >= current_datetime()`
+
   }
+ 
  
 }
 --pre_operations {
@@ -19,8 +22,10 @@ config {
 SELECT * 
   FROM `test-serge-1995.raw_ua.staging_1`
 
-${when(incremental(),`WHERE id NOT IN (SELECT id FROM ${self()})`)}
+--${when(incremental(),`WHERE id NOT IN (SELECT id FROM ${self()})`)}
 
--- self() is the table id of the table mentioned in config() + action name 
+-- self() is the table id of the table mentioned in config() + action name (target)
 
-
+incremental_where {
+    system_last_update > (select max(system_last_update) from ${self()}) 
+}
