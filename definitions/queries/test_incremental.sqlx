@@ -1,0 +1,36 @@
+pre_operations {
+DECLARE max_system_last_update DEFAULT (SELECT max(system_last_update) 
+                                        FROM `test-serge-1995.raw_ua.staging_1`)
+}
+
+config {
+  type: "incremental", //  comments blabla
+  schema: "prepared_ua",
+  name : "staging_1",
+  uniqueKey: ["id"],
+  bigquery: { 
+    partitionBy: "DATE(system_last_update)",
+    updatePartitionFilter: `system_last_update >= T.system_last_update`
+
+  }
+ 
+ 
+}
+--pre_operations {
+--   ${when(incremental(),`TRUNCATE TABLE ${self()}`)}
+--
+--}
+
+
+-- The rest of a SQLX file contains your SELECT statement used to create the table.
+
+SELECT * 
+  FROM `test-serge-1995.raw_ua.staging_1`
+
+--${when(incremental(),`WHERE id NOT IN (SELECT id FROM ${self()})`)}
+
+-- self() is the table id of the table mentioned in config() + action name (target)
+
+incremental_where {
+    system_last_update > (select max(system_last_update) from ${self()}) 
+}
