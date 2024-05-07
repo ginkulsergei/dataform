@@ -9,7 +9,9 @@ config {
 TRUNCATE TABLE `dataformtraining2024.prepared_ua.staging_1`;
 INSERT INTO `dataformtraining2024.prepared_ua.staging_1`
 SELECT * 
-  FROM `test-serge-1995.raw_ua.staging_1`
+  FROM `test-serge-1995.raw_ua.staging_1`;
+
+CREATE TABLE `dataformtraining2024.prepared_ua.staging_1_ghost`
 --,("Christopher", "Nolan", "Oppenheimer")
 
 

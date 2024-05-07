@@ -8,8 +8,8 @@
 
 config {
   type: "operations", // Creates a view in BigQuery. Try changing to "table" instead.
-  dependencies : ["dataformtraining2024.prepared_ua.staging_1",
-                  "dataformtraining2024.prepared_ua.staging_2"] // mention all dependencies
+  dependencies : ["dataformtraining2024.prepared_ua.staging_1_ghost",
+                  "dataformtraining2024.prepared_ua.staging_2_ghost"] // mention all dependencies
 }
 
 -- The rest of a SQLX file contains your SELECT statement used to create the table.
@@ -22,7 +22,10 @@ UNION ALL
 SELECT * 
   FROM `dataformtraining2024.prepared_ua.staging_2`
 
+post_operations {
+DROP `dataformtraining2024.prepared_ua.staging_1_ghost`
 
+}
 -- ${when(incremental(), ```(SELECT COUNT(DATE(TIMESTAMP_MILLIS(last_modified_time))) AS number_of_updates
 --                             FROM `dataformtraining2024.dataform`.__TABLES__
 --                            WHERE table_id = "staging_1"
