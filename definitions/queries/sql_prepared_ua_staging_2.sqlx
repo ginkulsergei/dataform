@@ -10,9 +10,16 @@ TRUNCATE TABLE `dataformtraining2024.prepared_ua.staging_2`;
 INSERT INTO `dataformtraining2024.prepared_ua.staging_2`
 SELECT * 
   FROM `test-serge-1995.raw_ua.staging_2`;
-  
-CREATE TABLE `dataformtraining2024.prepared_ua.staging_1_ghost`
 
+CREATE OR REPLACE TABLE `dataformtraining2024.prepared_ua.staging_1_ghost`
+(
+id INT,
+first_name	STRING,
+last_name	STRING,
+movie_name	STRING, 
+system_last_update DATETIME)
+
+PARTITION BY DATE(system_last_update);
 --,("Christopher", "Nolan", "Oppenheimer")
 
 
