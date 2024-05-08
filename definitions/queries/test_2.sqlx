@@ -1,6 +1,7 @@
 config {
   type: "table", //  comments blabla
- 
+  schema: "dataform",
+  name : "test_2",
 }
 
 

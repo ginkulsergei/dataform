@@ -1,14 +1,10 @@
 config {
   type: "table", //  comments blabla
- 
+  schema: "dataform",
+  name : "test_1",
 }
 
 
 -- The rest of a SQLX file contains your SELECT statement used to create the table.
 SELECT * 
-  FROM `test-serge-1995.raw_ua.staging_1`;
-
---,("Christopher", "Nolan", "Oppenheimer")
-
-
--- select "Hello Serge"
+  FROM `test-serge-1995.raw_ua.staging_1`
