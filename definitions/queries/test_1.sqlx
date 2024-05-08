@@ -1,0 +1,14 @@
+config {
+  type: "table", //  comments blabla
+ 
+}
+
+
+-- The rest of a SQLX file contains your SELECT statement used to create the table.
+SELECT * 
+  FROM `test-serge-1995.raw_ua.staging_1`;
+
+--,("Christopher", "Nolan", "Oppenheimer")
+
+
+-- select "Hello Serge"

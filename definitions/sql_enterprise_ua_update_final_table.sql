@@ -8,8 +8,8 @@
 
 config {
   type: "operations", // Creates a view in BigQuery. Try changing to "table" instead.
-  dependencies : ["dataformtraining2024.prepared_ua.staging_1_ghost",
-                  "dataformtraining2024.prepared_ua.staging_2_ghost"] // mention all dependencies
+  dependencies : ["dataformtraining2024.dataform.test_1",
+                  "dataformtraining2024.dataform.test_2"] // mention all dependencies dataformtraining2024.prepared_ua.staging_2_ghost
 }
 
 -- The rest of a SQLX file contains your SELECT statement used to create the table.
